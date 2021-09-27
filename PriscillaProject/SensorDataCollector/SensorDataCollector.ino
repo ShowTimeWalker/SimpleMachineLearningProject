@@ -1,15 +1,18 @@
 #include <Arduino_FreeRTOS.h>
 #include <Wire.h>
 #include "Adafruit_SGP30.h"
+#include "DHT.h"
+#include "string.h"
 
 // tasks
 void blink(void *pvParameters);
 void readMicrophone(void *pvParameters);
 void readCO2Concentration(void *pvParameters);
+void readHumidityAndTemperature(void *pvParameters);
 void writeToPort(void *pvParameters);
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   while(!Serial);
 
   xTaskCreate(
@@ -17,7 +20,16 @@ void setup() {
     "SystemIsRunning",
     128,  // stack size
     NULL, // parameters
-    0,    // priority
+    1,    // priority
+    NULL  // handle 
+  );
+
+  xTaskCreate(
+    readMicrophone,
+    "ReadFromMicrophone",
+    128,  // stack size
+    NULL, // parameters
+    1,    // priority
     NULL  // handle 
   );
 
@@ -31,22 +43,22 @@ void setup() {
   );
 
 //  xTaskCreate(
-//    readMicrophone,
-//    "ReadFromMicrophone",
-//    128,  // stack size
+//    readHumidityAndTemperature,
+//    "ReadHumidityAndTemperature",
+//    512,  // stack size
 //    NULL, // parameters
-//    1,    // priority
+//    2,    // priority
 //    NULL  // handle 
 //  );
 
-//  xTaskCreate(
-//    writeToPort,
-//    "PrintToSerial",
-//    128,  // stack size
-//    NULL, // parameters
-//    1,    // priority
-//    NULL  // handle 
-//  );
+  xTaskCreate(
+    writeToPort,
+    "PrintToSerial",
+    256,  // stack size
+    NULL, // parameters
+    1,    // priority
+    NULL  // handle 
+  );
 }
 
 void loop() {
@@ -67,9 +79,9 @@ int volumn = 0;
 void readMicrophone(void *pvParameters) {
   while(true) {
     volumn = analogRead(A0);
-    Serial.print("Volumn: ");
-    Serial.println(volumn);
-    vTaskDelay(20 / portTICK_PERIOD_MS);
+//    Serial.print("Volumn: ");
+//    Serial.println(volumn);
+    vTaskDelay(5 / portTICK_PERIOD_MS);
   }
 }
 
@@ -79,23 +91,36 @@ void readCO2Concentration(void *pvParameters) {
   while (!sgp.IAQmeasure());
   while (true) {
     sgp.IAQmeasure();
-    Serial.print("TVOC "); Serial.print(sgp.TVOC); Serial.println(" ppb");
-    Serial.print("eCO2 "); Serial.print(sgp.eCO2); Serial.println(" ppm");
+//    Serial.print("TVOC ");
+//    Serial.print(sgp.TVOC);
+//    Serial.println(" ppb");
+//    Serial.print("eCO2 ");
+//    Serial.print(sgp.eCO2);
+//    Serial.println(" ppm");
+    vTaskDelay(40 / portTICK_PERIOD_MS);
+  }
+}
+
+#define DHTPIN 2
+#define DHTTYPE DHT11
+DHT dht(DHTPIN, DHTTYPE);
+void readHumidityAndTemperature(void *pvParameters) {
+  dht.begin();
+  while(true) {
+    Serial.print("Humidity: ");
+    Serial.println(dht.readHumidity());
+    Serial.print("Temperature: ");
+    Serial.println(dht.readTemperature());
     vTaskDelay(100 / portTICK_PERIOD_MS);
   }
 }
 
+char msg[7];
+
 void writeToPort(void *pvParameters) {
-  int a = 5;
-  int b = 1;
-  char msg[7] = "";
+  int counter = 0;
   while(true) {
-    a += 1;
-    b += 2;
-    sprintf(msg, "%03d,%03d", a % 1000, b % 1000);
     Serial.write(msg);
-    Serial.write(13);
-    Serial.write(10);
-    vTaskDelay(100 / portTICK_PERIOD_MS);
+    vTaskDelay(5 / portTICK_PERIOD_MS);
   }
 }
