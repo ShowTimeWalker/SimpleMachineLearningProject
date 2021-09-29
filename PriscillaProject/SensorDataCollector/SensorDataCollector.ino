@@ -56,7 +56,7 @@ void setup() {
     "PrintToSerial",
     256,  // stack size
     NULL, // parameters
-    1,    // priority
+    3,    // priority
     NULL  // handle 
   );
 }
@@ -139,6 +139,6 @@ void writeToPort(void *pvParameters) {
       counter = 0;
       Serial.write(msg);
     }
-    vTaskDelay(100 / portTICK_PERIOD_MS);
+    vTaskDelay(20 / portTICK_PERIOD_MS);
   }
 }
