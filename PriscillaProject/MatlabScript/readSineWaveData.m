@@ -15,10 +15,11 @@ src.UserData.CO2(end+1) = str2double(words(12));
 % callbacks and plot the data.
 if size(src.UserData.Microphone, 2) >= 4500
     configureCallback(src, "off");
-    plot(src.UserData.Microphone);
+%     plot(src.UserData.Microphone);
     Audio = src.UserData.Microphone(1301:end);
     TVOC = src.UserData.TVOC(131:end);
     CO2 = src.UserData.CO2(131:end);
-    save("./DATA/test_5.mat", "Audio", "TVOC", "CO2");
+    dataSegments = dataDivision({Audio, CO2, TVOC});
+    save("./DATA/test_9.mat", "Audio", "TVOC", "CO2", "dataSegments");
 end
 end
