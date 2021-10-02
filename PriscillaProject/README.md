@@ -35,12 +35,14 @@
   ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/ReceiveInMatlab.png)  
   在最后一行打一个断点，运行脚本，开始自动采集数据，设定为30s后开始采集，采集时间为1分钟  
   每接收完一个数据包（回车换行），进行回调，回调函数如下：  
-	![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/CallbackFunction.png)  
+  ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/CallbackFunction.png)  
   在回调函数中，调用数据分割算法，将连续的波形分割成为多个数据段，分割效果如图：  
   ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/DataDivision.png)  
   工作区形成数据包如下：  
   ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/DataAfterDivision.png)  
-  运行脚本，对分割后的数据集进行预处理：  
+
+3 数据预处理，机器学习，预测    
+  保存数据集到相应目录，运行脚本，对分割后的数据集进行预处理：  
   ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/Proprocessing.png)  
   代码4-9行为特征选择器，通过bool选择对应数据段的特征，代码24，26，28行为特征提取，一共可以提取16种特征，12中时域特征，4种频域特征，预处理完后，在工作区的数据如下：  
   ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/BeforeTraining.png)  
