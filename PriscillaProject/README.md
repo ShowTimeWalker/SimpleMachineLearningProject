@@ -44,10 +44,15 @@
   ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/Proprocessing.png)  
   代码4-9行为特征选择器，通过bool选择对应数据段的特征，代码24，26，28行为特征提取，一共可以提取16种特征，12中时域特征，4种频域特征，预处理完后，在工作区的数据如下：  
   ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/BeforeTraining.png)  
-  ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/ReceiveInMatlab.png)  
-  ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/ReceiveInMatlab.png)  
-  ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/ReceiveInMatlab.png)  
-  ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/ReceiveInMatlab.png)  
+  在工作区形成了训练集train和目标值等数据，调用BPNN训练算法，训练模型，得到如下数据：  
+  ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/AfterTraining.png)  
+  对应的代码如下：  
+  ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/ClassifierConstructionCode.png)  
+  代码3-6行进行配置参数，第8行调用预处理函数进行特征提取，归一化等预处理，第9行进行训练模型，训练结果如下：  
+  Performance:  
+  ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/Performance.png)  
+  ConfusionMarrix:  
+  ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/ConfusionMatrix.png)  
   ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/ReceiveInMatlab.png)  
   ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/ReceiveInMatlab.png)  
   ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/ReceiveInMatlab.png)  
