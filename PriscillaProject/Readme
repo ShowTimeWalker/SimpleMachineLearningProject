@@ -24,9 +24,9 @@
   为了提高传输效率，以数据包为单位传输，每个数据包(package)12个数据
   一个数据包中包含10个声音数据，1个CO2浓度数据，单位ppm(parts per million)，1个TVOC浓度数据，单位ppb(parts per billion)
   每秒钟发送5个package，代码如下：
-  ![image](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/DataTransmitCode.png)
+  ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/DataTransmitCode.png)
   在串口监视器中，可以看到数据组织方式如下（一行表示一个package）：
-  ![image](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/DataPackage.png)
+  ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/DataPackage.png)
   将arduino源码写入单片机，运行即可，正常开始传输后关闭串口监视器
   
   2.2 接收端
