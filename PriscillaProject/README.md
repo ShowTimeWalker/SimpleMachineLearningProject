@@ -53,6 +53,7 @@
   ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/Performance.png)  
   ConfusionMarrix:  
   ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/ConfusionMatrix.png)  
-  ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/ReceiveInMatlab.png)  
-  ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/ReceiveInMatlab.png)  
-  ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/ReceiveInMatlab.png)  
+  其他信息：  
+  ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/TrainResult.png)  
+  模型训练完后，保存在工作区，组织一组未参与训练的数据，作为预测集，调用预测函数，获得预测分类结果，最后在终端展示预测结果：  
+  ![](https://github.com/ShowTimeWalker/SimpleMachineLearningProject/blob/master/PriscillaProject/images/ResultInConsole.png)  
